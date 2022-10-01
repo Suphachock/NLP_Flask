@@ -215,7 +215,7 @@ def filter1():
 @app.route('/fakeNews', methods=['GET', 'POST'])
 def fakeNews():
     if request.method == "POST":
-        model_path = "FakeNewsV1"
+        model_path = "model"
         real_news = request.form['text'].strip()
         model = AutoModelForSequenceClassification.from_pretrained(model_path)
         tokenizer = AutoTokenizer.from_pretrained(model_path)
