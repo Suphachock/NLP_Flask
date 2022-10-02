@@ -10,5 +10,5 @@ transformers
 en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.0/en_core_web_sm-3.4.0-py3-none-any.whl
 transformers
 pandas
-torch==1.11.0+cpu
-torchvision==0.12.0+cpu
+# torch==1.11.0+cpu
+# torchvision==0.12.0+cpu
