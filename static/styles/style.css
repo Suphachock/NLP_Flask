@@ -7,6 +7,7 @@ body {
   margin: 0;
   background: linear-gradient(#141e30, #243b55) fixed no-repeat;
 }
+
 .ex1 {
   color: #fff;
   font: Consolas, Monaco, monospace;
@@ -46,8 +47,27 @@ input.largerCheckbox {
   padding: 3px;
   width: 20%;
 }
-.block span {
-  width:100px;
+.new2{
+  text-align: left;
+  width: 100%;
+  margin: auto;
+  padding: auto;
+  
+}
+
+.grop1{
+  text-align: left;
+  display: inline-block;
+  width: 45%;
+  margin: 0 auto;
+  padding: auto;
+}
+.grop2{
+  text-align: left;
+  width: 45%;
+  margin: 0 40px auto;
+  padding: auto;
+  float: right;
 }
 
 div.table-title {

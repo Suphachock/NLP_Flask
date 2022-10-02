@@ -44,12 +44,19 @@
               value="Submit"
               align="center"
             /> -->
-            <button class="custom-btn btn-6" type="submit"name="action" value="Submit"><span>Submit</span></button>
+            <button
+              class="custom-btn btn-6"
+              type="submit"
+              name="action"
+              value="Submit"
+            >
+              <span>Submit</span>
+            </button>
           </div>
         </div>
       </form>
       <h4 align="center">
-        Find Word
+        Find Keywords
         <form method="POST" class="example">
           <input
             type="text"
@@ -59,70 +66,75 @@
             id="text"
             required
           />
-          <!-- <button
+          <button
+            class="custom-btn btn-7"
             type="submit"
             name="action"
             value="Search"
-            id="submit"
-            class="btn btn-outline-warning"
           >
-            Search <i class="fa fa-search" aria-hidden="true"></i>
-          </button> -->
-          <button class="custom-btn btn-7" type="submit" name="action" value="Search"><span STYLE="font-size:18px">Search</span></button>
+            <span STYLE="font-size:18px">Search</span>
+          </button>
         </form>
       </h4>
-      <h4>Bag-of-words</h4>
+      <div class="new2">
+        <div class="grop1">
+          <h4>Bag-of-words</h4>
+          <div class="table-title"></div>
+          <table class="table-fill" align="left">
+            <thead>
+              <tr>
+                <th class="text-left">NO.</th>
+                <th class="text-left">Word Tokenize</th>
+                <th class="text-left">Total (Words)</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                {% set count = namespace(value=1) %} {% for item in result1 %}
+                <td class="text-left">{{count.value}}</td>
+                <td class="text-left">{{item[0]}}</td>
+                <td class="text-left">{{item[1]}}</td>
+              </tr>
+              {% set count.value = count.value + 1 %} {% endfor %}
+              <tr></tr>
+            </tbody>
+          </table>
+        </div>
+        {% if result2 %}
+        <div class="grop2">
+          <h4>TF-IDF</h4>
+          <div class="table-title"></div>
+          <table class="table-fill" align="left">
+            <thead>
+              <tr>
+                <th class="text-left">NO.</th>
+                <th class="text-left">Word Tokenize</th>
+                <th class="text-left">Total (%)</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                {% set count = namespace(value=1) %} {% for item in result2 %}
+                <td class="text-left">{{count.value}}</td>
+                <td class="text-left">{{item[0]}}</td>
+                <td class="text-left">{{item[1]}}</td>
+              </tr>
+              {% set count.value = count.value + 1 %} {% endfor %}
+              <tr></tr>
+            </tbody>
+          </table>
+        </div>
+        {% endif %} {% if result3 %}
+      </div>
+      <br />
+      <h4 align="center">Keywords Results</h4>
       <div class="table-title"></div>
-      <table class="table-fill">
+      <table class="table-fill" align="center">
         <thead>
           <tr>
-            <th class="text-left">NO.</th>
-            <th class="text-left">Word Tokenize</th>
-            <th class="text-left">Total (Words)</th>
-          </tr>
-        </thead>
-        <tbody class="table-hover">
-          <tr>
-            {% set count = namespace(value=1) %} {% for item in result1 %}
-            <td class="text-left">{{count.value}}</td>
-            <td class="text-left">{{item[0]}}</td>
-            <td class="text-left">{{item[1]}}</td>
-          </tr>
-          {% set count.value = count.value + 1 %} {% endfor %}
-          <tr></tr>
-        </tbody>
-      </table>
-      {% if result2 %}
-      <h4>TF-IDF</h4>
-      <div class="table-title"></div>
-      <table class="table-fill">
-        <thead>
-          <tr>
-            <th class="text-left">NO.</th>
-            <th class="text-left">Word Tokenize</th>
-            <th class="text-left">Total (%)</th>
-          </tr>
-        </thead>
-        <tbody class="table-hover">
-          <tr>
-            {% set count = namespace(value=1) %} {% for item in result2 %}
-            <td class="text-left">{{count.value}}</td>
-            <td class="text-left">{{item[0]}}</td>
-            <td class="text-left">{{item[1]}}</td>
-          </tr>
-          {% set count.value = count.value + 1 %} {% endfor %}
-          <tr></tr>
-        </tbody>
-      </table>
-      {% endif %} {% if result3 %}
-      <h4>Words Results</h4>
-      <div class="table-title"></div>
-      <table class="table-fill">
-        <thead>
-          <tr>
-            <th class="text-left">Name</th>
+            <th class="text-left">Keywords</th>
             <th class="text-left">Text File</th>
-            <th class="text-left">Total (Words)</th>
+            <th class="text-left">Total (Keywords)</th>
           </tr>
         </thead>
         <tbody class="table-hover">
@@ -160,7 +172,6 @@
     </div>
 
     <script>
-
       if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
       }
