@@ -59,7 +59,6 @@ input.largerCheckbox {
   width: 45%;
   margin: 0 auto;
   padding: auto;
-  
 }
 .grop2 {
   text-align: left;
@@ -68,6 +67,20 @@ input.largerCheckbox {
   padding: auto;
   float: right;
   height: auto;
+}
+.grop3 {
+  display: flex;
+  justify-content: space-between;
+  padding: auto;
+  margin: 0 auto;
+}
+.grop3 button {
+  margin: 10px 0 auto;
+  padding: auto;
+}
+.load {
+  margin: 15px 0 auto;
+  padding: auto;
 }
 
 div.table-title {
