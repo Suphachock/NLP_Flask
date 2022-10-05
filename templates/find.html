@@ -163,9 +163,11 @@
               "</thead>" +
               '<tbody class="table-hover">';
             for (var i = 0; i < data.text_file.length; i++) {
+              if (data.count[i] == null) data.count[i] = 0;
               myTable += `<tr>
               <td class="text-left">${data.keyword}</td>
-              <td class="text-left">${data.text_file[i]}</td>
+              <td class="text-left">
+                ${data.text_file[i]}</td>
               <td class="text-left">${data.count[i]}</td>
               </tr>`;
             }
