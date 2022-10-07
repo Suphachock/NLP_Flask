@@ -1,3 +1,4 @@
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from flask import Flask, render_template, request, Markup, jsonify
 import os
 from nltk.stem import WordNetLemmatizer
@@ -10,8 +11,6 @@ from gensim.models.tfidfmodel import TfidfModel
 import spacy
 from spacy import displacy
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import pandas as pd
-import json
 app = Flask(__name__)
 app.config["UPLOAD PATH"] = "upload"
 
@@ -117,7 +116,6 @@ def lab2():
     return render_template('lab2.html')
 
 
-
 @app.route('/filter', methods=['GET', 'POST'])
 def filter1():
     if request.method == "POST":
@@ -208,10 +206,35 @@ def search():
             test = Dictionary(test1)
             computer_id = test.token2id.get(find_word)
             tmp_file.append(computer_id)
-            data={'count': tmp_file, 'keyword': find_word, 'text_file': textfile}
+            data = {'count': tmp_file,
+                    'keyword': find_word, 'text_file': textfile}
         return (data)
     return render_template('find.html')
 
 
+@app.route('/sentiment', methods=['GET', 'POST'])
+def sentiment():
+    if request.method == "POST":
+        text = request.form['text'].strip()
+        clean_txt = text.replace("[^a-zA-Z#]", " ")
+        clean_txt = clean_txt.casefold()
+        print(clean_txt)
+        sid = SentimentIntensityAnalyzer()
+        scores = sid.polarity_scores(text)
+        for key, value in scores.items():
+            result = value
+        status = ''
+        if(result < 0.5):
+            status = 'Negative'
+        if(result == 0.5):
+            status = 'Neutral'
+        if(result > 0.5):
+            status = 'Positive'
+        data = 'Your comment is ' +status+' And Score : ' + str(result)
+        return (data)
+    return render_template('sentiment.html')
+
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=8080)
+    # app.run(host='0.0.0.0',port=8080)
+    app.run(debug=True)
