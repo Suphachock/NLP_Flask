@@ -13,6 +13,9 @@ from spacy import displacy
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 app = Flask(__name__)
 app.config["UPLOAD PATH"] = "upload"
+import nltk
+
+nltk.download('vader_lexicon')
 
 
 @app.route("/", methods=["GET", "POST"])
